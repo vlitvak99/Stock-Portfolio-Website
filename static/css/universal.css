@@ -1,0 +1,296 @@
+
+html, body{
+  height: 100%;
+}
+
+body {
+  background-color: #232323;
+  background-image: url('../images/Background.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: "Poppins", "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pagecontainer {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.toolbar {
+  width: 100%;
+  min-width: 750px;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  text-align: center;
+  box-shadow: 0px 0px 20px #0B0B0B;
+  background: #484848;
+  color: #343434;
+  z-index: 1;
+}
+
+.toolbar .left {
+  float: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 20px;
+  z-index: 10;
+}
+
+.toolbar .middle {
+  position: absolute;
+  height: 100%;
+  width: 30%;
+  margin-left: 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.toolbar .right {
+  float: right;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 20px;
+  z-index: 10;
+}
+
+.myshare {
+  max-width: 30%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-top: 11px;
+}
+
+message {
+  font-size: 20px;
+  color: white;
+  margin-top: 15px;
+}
+
+myshare {
+  font-size: 25px;
+  color: #24A292;
+  margin-top: 15px;
+  text-shadow: 1px 1px #111111;
+}
+
+.middle message {
+  margin-top: 0;
+}
+
+.buttoncontainer {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  cursor: pointer;
+  background-color: #24A292;
+  background: linear-gradient(90deg, #24A292 0%, #247da2 100%);
+  color: white;
+  font-size: 12px;
+  text-align: center;
+  padding: 14px 0px;
+  margin: 8px;
+  margin-bottom: 10px;
+  border-radius: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.button:hover {
+  background-color: #2cc3af;
+  background: linear-gradient(90deg, #2cc3af 0%, #2897c6 100%);
+}
+
+.button:active {
+  background-color: #27b09e;
+  background: linear-gradient(90deg, #27b09e 0%, #258eba 100%);
+}
+
+.toolbar .button {
+  border-radius: 10px;
+  padding: 12px 0px;
+  background-color: #24A292;
+  background: linear-gradient(90deg, #24A292 0%, #2487a2 100%);
+}
+
+.toolbar .button:hover {
+  background-color: #2cc3af;
+  background: linear-gradient(90deg, #2cc3af 0%, #289cc6 100%);
+}
+
+.toolbar .button:active {
+  background-color: #27b09e;
+  background: linear-gradient(90deg, #27b09e 0%, #2590ba 100%);
+}
+
+.menu {
+  display:none;
+  font-size: 15px;
+  text-shadow: none;
+  text-align: left;
+  position: absolute;
+  border-radius: 10px;
+  top: 55px;
+  right: 28px;
+  background-color: #353535;
+  background: linear-gradient(0deg, #1D1D1D 0%, #353535 100%);
+  width: 200px;
+  z-index: 1;
+  word-wrap: break-word;
+}
+
+.showmenu {
+  display: block;
+}
+
+.dropdownsection {
+  width: 90%;
+  margin-left: 5%;
+  border-bottom: 2px solid;
+  border-image: linear-gradient(90deg, #24A292 0%, #247da2 100%);
+  border-image-slice: 1;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.dropdownclickable {
+  cursor: pointer;
+  color: white;
+  padding: 10px;
+}
+
+.dropdownclickable:hover {
+  background-color: #24A292;
+  background: linear-gradient(90deg, #24A292 0%, #247da2 100%);
+}
+
+.dropdownclickable:active {
+  background-color: #24A292;
+  background: linear-gradient(90deg, #219385 0%, #217294 100%);
+}
+
+.redbutton {
+  cursor: pointer;
+  background-color: #d22d2d;
+  background: linear-gradient(90deg, #d2622d 0%, #d22d2d 100%);
+  color: white;
+  font-size: 12px;
+  text-align: center;
+  padding: 14px 0px;
+  margin: 8px;
+  margin-bottom: 10px;
+  border-radius: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.redbutton:hover {
+  background-color: #ff3636;
+  background: linear-gradient(90deg, #ff7838 0%, #ff3636 100%);
+}
+
+.redbutton:active {
+  background-color: #e02f2f;
+  background: linear-gradient(90deg, #df6931 0%, #e02f2f 100%);
+}
+
+.helplink {
+  cursor: pointer;
+  color: #27B09F;
+}
+
+.helplink u:hover {
+  color: #2CC6B3;
+}
+
+.helplink u:active {
+  color: #2ABAA8;
+}
+
+input[type=text], input[type=password] {
+  display: inline-block;;
+  color: #E4E4E4;
+  padding: 8px 7px;
+  margin: 0px;
+  display: inline-block;
+  border: none;
+  border-bottom: 1px solid;
+  border-image: #CCC;
+  box-sizing: border-box;
+  background: transparent;
+  font-family: "Poppins", "Helvetica Neue", sans-serif;
+  caret-color: white;
+}
+
+input[type=text]::placeholder, input[type=password]::placeholder {
+  color: #A6A6A6;
+  opacity: 1;
+  font-family: "Poppins", "Helvetica Neue", sans-serif;
+  font-size: 12px;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  outline: none;
+  border-color: #247da2;
+  border-image: linear-gradient(90deg, #24A292 0%, #247da2 100%);
+  border-image-slice: 1;
+}
+
+label {
+  color: #DDDDDD;
+  text-shadow: 1px 1px #111111;
+}
+
+.error {
+  height: 18px;
+  text-align: center;
+  font-size: 12px;
+  color: #FF3200;
+  opacity: 0%;
+  transition: opacity .5s;
+  text-shadow: 1px 1px #2F2F2F;
+}
+
+.footer {
+  color: #707070;
+  text-shadow: 1px 1px #111111;
+  font-size: 10px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  min-width: 750px;
+  height: 15px;
+  text-align: center;
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.selectable {
+  -webkit-touch-callout: default;
+  -webkit-user-select: text;
+  -khtml-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}

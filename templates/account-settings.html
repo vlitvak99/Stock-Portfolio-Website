@@ -1,0 +1,104 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MyShare Account Settings</title>
+  <meta name="author" content="Vlad Litvak">
+  <meta name="description" content="MyShare Portfolio Manager Account Settings Page">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/MyShareFavicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/universal.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/wide-panel.css') }}">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins'>
+  <script src="{{ url_for('static', filename='js/account-settings.js') }}"></script>
+</head>
+
+<body onload="loadUserMenuAndInfo()" id="body">
+  <div class="pagecontainer">
+
+    <!-- toolbar -->
+    <div class="toolbar unselectable">
+
+      <!-- title -->
+      <div class="middle">
+        <message>Acccount Settings</message>
+      </div>
+
+      <!-- home button -->
+      <div class="left">
+        <div class="button" style="width:70px;" onclick="window.location.href='home'">Home</div>
+      </div>
+
+      <!-- right set of buttons -->
+      <div class="right" id="right buttons"></div>
+
+    </div>
+
+    <!-- display panel -->
+    <div class="widepanel unselectable" style="max-height:530px;">
+
+      <!-- name input -->
+      <div style="width:60%;margin-left:20%;margin-top:40px;">
+        <!-- first name input -->
+        <div style="width:45%;float:left;">
+          <div class="inputlabel">
+            <div class="name">First Name:</div>
+          </div>
+          <div style="margin-bottom:10px;">
+            <input style="width:100%" type="text" id="first name" placeholder="John" spellcheck="false" onclick="hideMessage()">
+          </div>
+        </div>
+        <!-- last name input -->
+        <div style="width:45%;float:right;">
+          <div class="inputlabel">
+            <div class="name">Last Name:</div>
+          </div>
+          <div style="margin-bottom:10px;">
+            <input style="width:100%" type="text" id="last name" placeholder="Smith" spellcheck="false" onclick="hideMessage()">
+          </div>
+        </div>
+      </div>
+
+      <!-- username input -->
+      <div class="inputlabel centeredlabel60">
+        <div class="name">Username:</div>
+        <div class="info">minimum 6 characters</div>
+      </div>
+      <div style="margin-bottom:10px;">
+        <input style="width:60%;" type="text" id="username" placeholder="john.smith" spellcheck="false" onclick="hideMessage()">
+      </div>
+
+      <!-- email input -->
+      <div class="inputlabel centeredlabel60">
+        <div class="name">Email:</div>
+        <div class="info">email will be used in password recovery</div>
+      </div>
+      <div style="margin-bottom:20px;">
+        <input style="width:60%;" type="text" id="email" placeholder="john.smith@example.com" spellcheck="false" onclick="hideMessage()">
+      </div>
+
+      <!-- space for error message -->
+      <div class="error" style="margin-bottom:10px;" id="error message"></div>
+
+      <!-- update information button -->
+      <div class="buttoncontainer">
+        <div class="button" style="width:30%" onclick="updateInfo()">Update Information</div>
+      </div>
+
+      <!-- change password link -->
+      <div class="helplink" style="font-size:11px;margin-bottom:20px;" onclick="window.location.href='change-password'">
+        <u>Change Password</u>
+      </div>
+
+      <!-- delete account button -->
+      <div class="buttoncontainer">
+        <div class="redbutton" style="width:30%;margin-bottom:30px;" onclick="window.location.href='delete-account'">Delete Account</div>
+      </div>
+
+    </div>
+
+    <div class="footer">Vlad Litvak &copy; 2020</div>
+
+  </div>
+</body>
+</html>

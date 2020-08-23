@@ -1,0 +1,49 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MyShare Holdings</title>
+  <meta name="author" content="Vlad Litvak">
+  <meta name="description" content="MyShare Portfolio Manager Holdings Page">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/MyShareFavicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/universal.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/list.css') }}">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins'>
+  <script src="{{ url_for('static', filename='js/holdings.js') }}"></script>
+</head>
+
+<body onload="loadUserMenuAndHoldings()" id="body">
+  <div class="pagecontainer">
+
+    <!-- toolbar -->
+    <div class="toolbar unselectable">
+
+      <!-- home button -->
+      <div class="left">
+        <div class="button" style="width:70px;" onclick="window.location.href='home'">Home</div>
+      </div>
+
+      <!-- right set of buttons -->
+      <div class="right" id="right buttons"></div>
+
+    </div>
+
+    <!-- holdings display area -->
+    <div class="listcontainer" id="holdings" style="cursor:default;">
+
+      <!-- portfolio statistics -->
+      <div class="listitem">
+        <div class="listitemsection" style="border:none">
+          <div class="symbol portfoliotitle">My Portfolio</div><div class="marketvalue" id="marketvalue">$0.00</div><div style="clear:both;"></div>
+          <div class="portfolioprinciple" style="margin-bottom:10px;">Principle:&nbsp;&nbsp;<span style="color:white;" id="principle">$0.00</span></div><div class="change" id="change" style="margin-bottom:10px;">+$0.00 | +0.00%</div><div style="clear:both;"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer">Vlad Litvak &copy; 2020</div>
+
+  </div>
+</body>
+</html>

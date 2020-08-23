@@ -1,0 +1,193 @@
+
+.pagecontainer {
+  align-items: center;
+  flex-direction: column;
+  min-height: 300px;
+  min-width: 750px;
+}
+
+.widepanel {
+  cursor: default;
+  position: absolute;
+  top: 80px;
+  bottom: 20px;
+  min-width: 600px;
+  max-width: 1275px;
+  width: 70%;
+  overflow: scroll;
+  background-color: #737373;
+  background: linear-gradient(0deg, #2A2A2A 0%, #5A5A5A 100%);
+  box-shadow: 0px 0px 20px #0B0B0B;
+  text-align: center;
+}
+
+.inputlabel {
+  width: 90%;
+  text-align: left;
+  color: #24A292;
+}
+
+.centeredlabel60 {
+  width: 60%;
+  margin-left: 20%;
+}
+
+.pagewarningmessage {
+  width: 80%;
+  margin-left: 10%;
+  font-size: 20px;
+  color: #D2582D;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px #2F2F2F;
+}
+
+.name {
+  font-size: 16px;
+  margin-bottom: 0;
+  text-shadow: 1px 1px #2F2F2F;
+}
+
+.info {
+  font-size: 12px;
+  margin-bottom: 0;
+  color: #D6D6D6;
+}
+
+textarea {
+  display: inline-block;;
+  color: #E4E4E4;
+  padding: 8px 7px;
+  margin: 0px;
+  display: inline-block;
+  border: none;
+  border: 1px solid;
+  border-image: #CCC;
+  box-sizing: border-box;
+  background: transparent;
+  caret-color: white;
+  font-family: "Poppins", "Helvetica Neue", sans-serif;
+  resize: none;
+}
+
+textarea::placeholder {
+  color: #A6A6A6;
+  opacity: 1;
+  font-family: "Poppins", "Helvetica Neue", sans-serif;
+  font-size: 12px;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #247da2;
+  border-image: linear-gradient(90deg, #24A292 0%, #247da2 100%);
+  border-image-slice: 1;
+}
+
+.symbol {
+  float:left;
+  font-size: 35px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-left: 30px;
+  margin-bottom: 0;
+  color: #24A292;
+}
+
+.symbolfullname {
+  font-size: 18px;
+  float: left;
+  margin-top: 10px;
+  margin-left: 30px;
+  margin-bottom: 0;
+  color: white;
+}
+
+.stockprice {
+  float:right;
+  font-size: 35px;
+  margin-top: 20px;
+  margin-right: 30px;
+  margin-bottom: 0;
+  color: white;
+}
+
+.change {
+  font-size: 18px;
+  float: right;
+  margin-top: 10px;
+  margin-right: 30px;
+  margin-bottom: 0;
+  color: white;
+}
+
+.columnleft {
+  float: left;
+  width: 47%;
+  height: 100%;
+}
+
+.columnright {
+  float: right;
+  width: 47%;
+  height: 100%;
+}
+
+.marketdata {
+  margin: 20px 20px 0px 20px;
+  height: calc(100% - 40px);
+}
+
+.tradingview-widget-container{
+  margin-top: 25px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  height: 250px;
+}
+
+.threecolumn {
+  float: left;
+  width: calc(33.33% - 2px);
+  height: 100%;
+}
+
+.stockstats {
+  font-size: 15px;
+  color: white;
+}
+
+.stockstats:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.stockstatname {
+  float: left;
+  margin-left: 15px;
+  margin-top : 5px;
+  margin-bottom: 5px;
+  color: #BBBBBB;
+}
+
+.stockstatvalue {
+  float: right;
+  margin-right : 15px;
+  margin-top : 5px;
+  margin-bottom: 5px;
+}
+
+.search {
+  width: 100%;
+  max-width: 500px;
+}
+
+.businesssummary{
+  text-align: left;
+  margin-top: 25px;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-bottom:30px;
+  font-size: 15px;
+  color: white;
+}

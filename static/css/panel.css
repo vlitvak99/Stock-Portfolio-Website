@@ -1,0 +1,46 @@
+
+h2 {
+  margin-bottom: 0px;
+}
+
+h5 {
+  margin-top: 0px;
+}
+
+.pagecontainer {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 600px;
+  min-width: 500px;
+}
+
+.panel {
+  background-color: #737373;
+  background: linear-gradient(0deg, #1D1D1D 0%, #505050 100%);
+  width: 450px;
+  height: 530px;
+  border-radius: 40px;
+  box-shadow: 0px 0px 20px #0B0B0B;
+  text-align: center;
+  color: #24A292;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.inputlabel {
+  text-align: left;
+  color: #24A292;
+}
+
+.name {
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+.info {
+  font-size: 10px;
+  margin-bottom: 0;
+  color: #D6D6D6;
+}

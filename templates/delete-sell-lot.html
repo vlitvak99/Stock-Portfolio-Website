@@ -1,0 +1,62 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MyShare Delete Sell Lot</title>
+  <meta name="author" content="Vlad Litvak">
+  <meta name="description" content="MyShare Portfolio Manager Delete Sell Lot Page">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/MyShareFavicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/universal.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/wide-panel.css') }}">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins'>
+  <script src="{{ url_for('static', filename='js/delete-sell-lot.js') }}"></script>
+</head>
+
+<body onload="loadUserMenu();" id="body">
+  <div class="pagecontainer">
+
+    <!-- toolbar -->
+    <div class="toolbar unselectable">
+
+      <!-- title -->
+      <div class="middle">
+        <message>Delete Sell Lot</message>
+      </div>
+
+      <!-- home button -->
+      <div class="left">
+        <div class="button" style="width:70px;" onclick="window.location.href='home'">Home</div>
+      </div>
+
+      <!-- right set of buttons -->
+      <div class="right" id="right buttons"></div>
+
+    </div>
+
+    <!-- display panel -->
+    <div class="widepanel unselectable" style="max-height:350px;">
+
+      <!-- warning message -->
+      <div class="pagewarningmessage" style="margin-top:40px;">Are you sure you want to delete this sell lot?</div>
+
+      <!-- space for error message -->
+      <div class="error" style="margin-bottom:10px;" id="error message"></div>
+
+      <!-- back button -->
+      <div class="buttoncontainer">
+        <div class="button" style="width:30%;" onclick="window.history.back();">No, Go Back</div>
+      </div>
+
+      <!-- delete sell lot button -->
+      <div class="buttoncontainer">
+        <div class="redbutton" style="width:30%;margin-bottom:30px;" onclick="deleteSellLot()">Yes, Delete Sell Lot</div>
+      </div>
+
+    </div>
+
+    <div class="footer">Vlad Litvak &copy; 2020</div>
+
+  </div>
+</body>
+</html>

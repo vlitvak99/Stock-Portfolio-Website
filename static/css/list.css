@@ -1,0 +1,220 @@
+
+.pagecontainer {
+  align-items: center;
+  flex-direction: column;
+  min-height: 300px;
+  min-width: 750px;
+}
+
+.search {
+  float: left;
+  margin-left: 30px;
+  width: 50%;
+  max-width: 500px;
+}
+
+input[type=text]::placeholder {
+  color: #D4D4D4;
+}
+
+.listcontainer {
+  margin-top: 60px;
+  margin-bottom: 20px;
+  min-width: 600px;
+  width: 70%;
+  overflow: scroll;
+}
+
+.listitem {
+  margin: 25px 15px;
+  min-height: 50px;
+  padding: 10px 0px;
+  height: auto;
+  background-color: #737373;
+  background: linear-gradient(0deg, #2A2A2A 0%, #5A5A5A 100%);
+  box-shadow: 0px 0px 20px #0B0B0B;
+  text-align: left;
+  overflow: scroll;
+}
+
+.listitemsection {
+  padding: 10px 0px;
+  margin-left:25px;
+  margin-right: 25px;
+  border-bottom: 2px solid;
+  border-image: linear-gradient(90deg, #24A292 0%, #247da2 100%);
+  border-image-slice: 1;
+}
+
+.listitem .button {
+  border-radius: 10px;
+  padding: 10px 0px;
+  background-color: #24A292;
+  background: linear-gradient(90deg, #24A292 0%, #2487a2 100%);
+}
+
+.listitem .button:hover {
+  background-color: #2cc3af;
+  background: linear-gradient(90deg, #2cc3af 0%, #289cc6 100%);
+}
+
+.listitem .button:active {
+  background-color: #27b09e;
+  background: linear-gradient(90deg, #27b09e 0%, #2590ba 100%);
+}
+
+.symbol {
+  cursor: pointer;
+  float:left;
+  font-size: 35px;
+  font-weight: bold;
+  margin-left: 10px;
+  margin-bottom: 0;
+  color: #24A292;
+}
+
+.portfoliotitle {
+  cursor: default;
+}
+
+.symbol:not(.portfoliotitle):hover {
+  color: #2AC0AD;
+}
+
+.symbol:not(.portfoliotitle):active {
+  color: #29B7A5;
+}
+
+.lottitle {
+  float: left;
+  color: white;
+  font-size: 23px;
+  margin-bottom: 0px;
+}
+
+.lotsymbol {
+  cursor: pointer;
+  font-size: 35px;
+  font-weight: bold;
+  margin-left: 10px;
+  margin-bottom: 0;
+  color: #24A292;
+}
+
+.lotsymbol:hover {
+  color: #2AC0AD;
+}
+
+.lotsymbol:active {
+  color: #29B7A5;
+}
+
+.lotsheader {
+  width: 100%;
+  text-align: center;
+  color: #BBBBBB;
+  font-size: 20px;
+}
+
+.lotdate {
+  font-size: 20px;
+  float: left;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 0;
+  color: white;
+}
+
+.lotprinciple {
+  font-size: 25px;
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 0;
+  color: white;
+}
+
+.portfolioprinciple {
+  font-size: 18px;
+  float: left;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 0;
+  color: #BBBBBB;
+}
+
+.symbolfullname {
+  font-size: 18px;
+  float: left;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 0;
+  color: white;
+}
+
+.marketvalue {
+  float:right;
+  font-size: 35px;
+  margin-right: 10px;
+  margin-bottom: 0;
+  color: white;
+}
+
+.change {
+  font-size: 18px;
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 0;
+  color: white;
+}
+
+.rightinfo {
+  font-size: 16px;
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 0;
+  color: #BBBBBB;
+}
+
+.leftinfo {
+  font-size: 16px;
+  float: left;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 0;
+  color: #BBBBBB;
+}
+
+table {
+  font-size: 16px;
+  border-collapse: collapse;
+  width: calc(100% - 10px);
+}
+
+td, th {
+  border: none;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  color: #BBBBBB;
+}
+
+td {
+  color: white;
+}
+
+tr:not(.header) {
+  cursor: pointer;
+}
+
+tr:not(.header):hover {
+  background-color: #1F1F1F;
+}
+
+tr:not(.header):active {
+  background-color: #111111;
+}

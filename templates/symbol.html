@@ -1,0 +1,115 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MyShare</title>
+  <meta name="author" content="Vlad Litvak">
+  <meta name="description" content="MyShare Portfolio Manager Live Symbol Info Page">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/MyShareFavicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/universal.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/wide-panel.css') }}">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins'>
+  <script src="{{ url_for('static', filename='js/symbol.js') }}"></script>
+</head>
+
+<body onload="loadButtons();loadInfo(0);" id="body">
+  <div class="pagecontainer">
+
+    <!-- toolbar -->
+    <div class="toolbar unselectable">
+
+      <!-- search bar -->
+      <div class="middle">
+        <div class="search">
+          <input style="width:100%;" type="text" id="search" placeholder="search symbol..." spellcheck="false" onkeydown = "if (event.keyCode == 13) search();">
+        </div>
+      </div>
+
+      <!-- home button -->
+      <div class="left">
+        <div class="button" style="width:70px;" onclick="window.location.href='http://localhost:1817/myshare/home'">Home</div>
+      </div>
+
+      <!-- right set of buttons -->
+      <div class="right" id="right buttons"></div>
+
+    </div>
+
+    <!-- display panel -->
+    <div class="widepanel">
+
+      <!-- symbol and stock price -->
+      <div class="symbol" id="symbol">-</div><div class="stockprice" id="stockprice">-</div><div style="clear:both;"></div>
+
+      <!-- symbol full name and day change -->
+      <div class="symbolfullname" id="symbolfullname">-</div><div class="change" id="daychange">- | -</div><div style="clear:both;"></div>
+
+        <!-- symbol tradingview widget -->
+        <div class="tradingview-widget-container" style="background:#1E222D">
+          <div id="stockchart" style="background:#1E222D"></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+          <script type="text/javascript">
+            new TradingView.widget(
+              {
+                "height": 250,
+                "width": "100%",
+                "symbol": symbol,
+                "interval": "1",
+                "timezone": "Etc/UTC",
+                "theme": "dark",
+                "style": "2",
+                "locale": "en",
+                "toolbar_bg": "#f1f3f6",
+                "enable_publishing": false,
+                "save_image": false,
+                "container_id": "stockchart"
+              }
+            );
+          </script>
+        </div>
+
+        <!-- first column of statistics -->
+        <div class="stockstats" style="height:100px; margin-right:20px; margin-left:20px;">
+          <div class="threecolumn">
+            <!-- open label and value -->
+            <div class="stockstatname">Open</div><div class="stockstatvalue" id="openvalue">-</div><div style="clear: both;"></div>
+            <!-- day high label and value -->
+            <div class="stockstatname">Day High</div><div class="stockstatvalue" id="dayhigh">-</div><div style="clear: both;"></div>
+            <!-- day low label and value -->
+            <div class="stockstatname">Day Low</div><div class="stockstatvalue" id="daylow">-</div><div style="clear: both;"></div>
+          </div>
+
+          <!-- second column of statistics -->
+          <div class="threecolumn" style="border-right:2px solid #24A292; border-left:2px solid #24A292;">
+            <!-- prev. close label and value -->
+            <div class="stockstatname">Prev. Close</div><div class="stockstatvalue" id="previousclose">-</div><div style="clear: both;"></div>
+            <!-- 52 wk high label and value -->
+            <div class="stockstatname">52 Wk High</div><div class="stockstatvalue" id="fiftytwoweekhigh">-</div><div style="clear: both;"></div>
+            <!-- 52 wk low label and value -->
+            <div class="stockstatname">52 Wk Low</div><div class="stockstatvalue" id="fiftytwoweeklow">-</div><div style="clear: both;"></div>
+          </div>
+
+          <!-- third column of statistics -->
+          <div class="threecolumn">
+            <!-- curr. price label and value -->
+            <div class="stockstatname">Curr. Price</div><div class="stockstatvalue" id="currentprice">-</div><div style="clear: both;"></div>
+            <!-- yield label and value -->
+            <div class="stockstatname">Yield</div><div class="stockstatvalue" id="yield">-</div><div style="clear: both;"></div>
+            <!-- volume label and value -->
+            <div class="stockstatname">Volume</div><div class="stockstatvalue" id="volume">-</div><div style="clear: both;"></div>
+          </div>
+        </div>
+
+        <!-- symbol business summary -->
+        <div class="businesssummary" id="businesssummary"></div>
+
+      </div>
+
+    </div>
+
+    <div class="footer">Vlad Litvak &copy; 2020</div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MyShare Sell Lot</title>
+  <meta name="author" content="Vlad Litvak">
+  <meta name="description" content="MyShare Portfolio Manager Sell Lot Page">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/MyShareFavicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/universal.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/list.css') }}">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins'>
+  <script src="{{ url_for('static', filename='js/sell-lot.js') }}"></script>
+</head>
+
+<body onload="loadUserMenuAndSellLot()" id="body">
+  <div class="pagecontainer">
+
+    <!-- toolbar -->
+    <div class="toolbar unselectable">
+
+      <!-- home button -->
+      <div class="left">
+        <div class="button" style="width:70px;" onclick="window.location.href='home'">Home</div>
+      </div>
+
+      <!-- right set of buttons -->
+      <div class="right" id="right buttons"></div>
+
+      <!-- back button -->
+      <div class="middle">
+        <div class="button" style="width:70px;" onclick="window.history.back();">&#9664; Back</div>
+      </div>
+
+    </div>
+
+    <!-- sell lot display area -->
+    <div class="listcontainer" id="lot" style="cursor:default;"></div>
+
+    <div class="footer">Vlad Litvak &copy; 2020</div>
+
+  </div>
+</body>
+</html>

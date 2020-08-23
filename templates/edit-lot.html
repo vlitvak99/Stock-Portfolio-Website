@@ -1,0 +1,106 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MyShare Edit Lot</title>
+  <meta name="author" content="Vlad Litvak">
+  <meta name="description" content="MyShare Portfolio Manager Edit Lot Page">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/MyShareFavicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/universal.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/wide-panel.css') }}">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins'>
+  <script src="{{ url_for('static', filename='js/edit-lot.js') }}"></script>
+</head>
+
+<body onload="loadUserMenuAndLotInfo()" id="body">
+  <div class="pagecontainer">
+
+    <!-- toolbar -->
+    <div class="toolbar unselectable">
+
+      <!-- title -->
+      <div class="middle">
+        <message>Edit Lot</message>
+      </div>
+
+      <!-- home button -->
+      <div class="left">
+        <div class="button" style="width:70px;" onclick="window.location.href='home'">Home</div>
+      </div>
+
+      <!-- right set of buttons -->
+      <div class="right" id="right buttons"></div>
+
+    </div>
+
+    <!-- display panel -->
+    <div class="widepanel unselectable" style="max-height:410px;">
+
+      <!-- first input row -->
+      <div style="width:60%;margin-left:20%;margin-top:40px;">
+        <!-- symbol display -->
+        <div style="width:45%;float:left;">
+          <div class="inputlabel">
+            <div class="name">Symbol:</div>
+          </div>
+          <div style="margin-bottom:12px;text-align:left;font-size:24px;color:white;" id="symbol">-</div>
+        </div>
+        <!-- buy date input -->
+        <div style="width:45%;float:right;">
+          <div class="inputlabel">
+            <div class="name">Buy Date:</div>
+          </div>
+          <div style="margin-bottom:10px;">
+            <input style="width:100%" type="text" id="date" placeholder="YYYY-MM-DD" spellcheck="false" onclick="hideMessage()">
+          </div>
+        </div>
+      </div>
+
+      <!-- second input row -->
+      <div style="width:60%;margin-left:20%;margin-top:40px;margin-bottom:10px;">
+        <!-- shares input -->
+        <div style="width:45%;float:left;">
+          <div class="inputlabel">
+            <div class="name">Shares:</div>
+          </div>
+          <div style="margin-bottom:10px;">
+            <input style="width:100%" type="text" id="shares" placeholder="20" spellcheck="false" onclick="hideMessage()">
+          </div>
+        </div>
+        <!-- cost/share input -->
+        <div style="width:45%;float:right;">
+          <div class="inputlabel">
+            <div class="name">Cost/Share:</div>
+          </div>
+          <div style="margin-bottom:10px;">
+            <input style="width:100%" type="text" id="cost" placeholder="12.34" spellcheck="false" onclick="hideMessage()">
+          </div>
+        </div>
+      </div>
+
+      <!-- space for error message -->
+      <div class="error" style="margin-top:200px;margin-bottom:10px;" id="error message"></div>
+
+      <!-- update lot button -->
+      <div class="buttoncontainer">
+        <div class="button" style="width:30%;" onclick="updateLot()">Update Lot</div>
+      </div>
+
+      <!-- delete lot button -->
+      <div class="buttoncontainer">
+        <div class="button redbutton" style="width:30%;" onclick="deleteLot()">Delete Lot</div>
+      </div>
+
+      <!-- cancel link -->
+      <div class="helplink" style="font-size:11px;margin-bottom:30px;" onclick="window.history.back();">
+        <u>Cancel</u>
+      </div>
+
+    </div>
+
+    <div class="footer">Vlad Litvak &copy; 2020</div>
+
+  </div>
+</body>
+</html>
