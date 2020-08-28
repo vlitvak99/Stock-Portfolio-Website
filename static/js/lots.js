@@ -1,6 +1,6 @@
 /**
  * @author Vlad Litvak
- * @since 08.14.2020
+ * @since 08.27.2020
  */
 
 // goes to home page if no user is logged in
@@ -141,9 +141,9 @@ function loadUserMenuAndLots() {
       if (response.status === 200) {
         response.json().then(function(data) {
           // verify user has lots
-          if(data.lots.length != 0 || data.currentPrinciple != 0 || data.totalValueIncrease != 0 || data.totalProfitFromSelling != 0) {
+          if(data.lots.length != 0 || data.currentPrincipal != 0 || data.totalValueIncrease != 0 || data.totalProfitFromSelling != 0) {
             // get existing display areas
-            let currentPrincipleDiv = document.getElementById("principle");
+            let currentPrincipalDiv = document.getElementById("principal");
             let valueIncreaseDiv = document.getElementById("valueincrease");
             let profitFromSellingDiv = document.getElementById("profit");
 
@@ -155,8 +155,8 @@ function loadUserMenuAndLots() {
             if(data.totalProfitFromSelling < 0) profitFromSellingDiv.style.color = "#FF3200";
             else profitFromSellingDiv.style.color = "#24A292";
 
-            // display the current principle, total value increase, and total profit from selling
-            currentPrincipleDiv.innerHTML = dollar.format(data.currentPrinciple);
+            // display the current principal, total value increase, and total profit from selling
+            currentPrincipalDiv.innerHTML = dollar.format(data.currentPrincipal);
             valueIncreaseDiv.innerHTML = changeInDollars.format(data.totalValueIncrease);
             profitFromSellingDiv.innerHTML = changeInDollars.format(data.totalProfitFromSelling);
 
@@ -223,10 +223,10 @@ function loadUserMenuAndLots() {
               lotDateDiv.innerHTML = lot.buyDate;
               headerDiv.appendChild(lotDateDiv);
 
-              let lotPrincipleDiv = document.createElement("div");
-              lotPrincipleDiv.classList.add("lotprinciple");
-              lotPrincipleDiv.innerHTML = dollar.format(lot.buyPrice * (lot.sharesSold + lot.sharesHolding));
-              headerDiv.appendChild(lotPrincipleDiv);
+              let lotPrincipalDiv = document.createElement("div");
+              lotPrincipalDiv.classList.add("lotprincipal");
+              lotPrincipalDiv.innerHTML = dollar.format(lot.buyPrice * (lot.sharesSold + lot.sharesHolding));
+              headerDiv.appendChild(lotPrincipalDiv);
 
               clearDiv = document.createElement("div");
               clearDiv.style.clear = "both";

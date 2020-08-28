@@ -1,6 +1,6 @@
 /**
  * @author Vlad Litvak
- * @since 08.14.2020
+ * @since 08.27.2020
  */
 
 // goes to home page if no user is logged in
@@ -191,10 +191,10 @@ function loadUserMenuAndLot() {
           lotDateDiv.innerHTML = data.buyDate;
           headerDiv.appendChild(lotDateDiv);
 
-          let lotPrincipleDiv = document.createElement("div");
-          lotPrincipleDiv.classList.add("lotprinciple");
-          lotPrincipleDiv.innerHTML = dollar.format(data.buyPrice * (data.sharesSold + data.sharesHolding));
-          headerDiv.appendChild(lotPrincipleDiv);
+          let lotPrincipalDiv = document.createElement("div");
+          lotPrincipalDiv.classList.add("lotprincipal");
+          lotPrincipalDiv.innerHTML = dollar.format(data.buyPrice * (data.sharesSold + data.sharesHolding));
+          headerDiv.appendChild(lotPrincipalDiv);
 
           clearDiv = document.createElement("div");
           clearDiv.style.clear = "both";

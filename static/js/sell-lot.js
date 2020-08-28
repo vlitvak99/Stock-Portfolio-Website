@@ -1,6 +1,6 @@
 /**
  * @author Vlad Litvak
- * @since 08.14.2020
+ * @since 08.27.2020
  */
 
 // goes to home page if no user is logged in
@@ -193,7 +193,7 @@ function loadUserMenuAndSellLot() {
           headerDiv.appendChild(sellLotDateDiv);
 
           let lotWithdrawDiv = document.createElement("div");
-          lotWithdrawDiv.classList.add("lotprinciple");
+          lotWithdrawDiv.classList.add("lotprincipal");
           lotWithdrawDiv.innerHTML = dollar.format(data.sellPrice * data.sharesSold);
           headerDiv.appendChild(lotWithdrawDiv);
 

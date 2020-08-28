@@ -4,8 +4,8 @@
 #
 # Author: Vlad Litvak
 # Email: vlitvak99@gmail.com
-# Version: 4.2.7
-# Since: 08.14.2020
+# Version: 4.2.8
+# Since: 08.27.2020
 # --------------------------------------------------------------------------
 
 from flask import Flask, Response, render_template
@@ -620,14 +620,14 @@ class Holdings(Resource):
 		if params["symbol"] is not None:
 			if not checkSymbolFormat(params["symbol"]) or not symbolExists(params["symbol"]):
 				return Response(json.dumps({ "error" : INVALID_SYMBOL_PARAM, "message" : "Invalid symbol" }), status=HTTP_BAD_REQUEST, mimetype="application/json")
-			
+
 			if not symbolHeldByUser(params["symbol"], params["id"]):
-				return Response(json.dumps({ "symbol" : symbol.upper(), "shares" : 0, "currentPrice" : round(stock_info.get_live_price(symbol), 2), "avgCostPerShare" : None, "totalPrinciple" : 0.0, "marketValue" : 0.0, "valueIncrease" : 0.0, "lots" : [] }), status=HTTP_OK, mimetype="application/json")
-			
+				return Response(json.dumps({ "symbol" : symbol.upper(), "shares" : 0, "currentPrice" : round(stock_info.get_live_price(symbol), 2), "avgCostPerShare" : None, "totalPrincipal" : 0.0, "marketValue" : 0.0, "valueIncrease" : 0.0, "lots" : [] }), status=HTTP_OK, mimetype="application/json")
+
 			symbolFilter = "AND Symbol = '{}'".format(params["symbol"].upper())
 
 		holdings = []
-		totalPrinciple = 0.0
+		totalPrincipal = 0.0
 		totalValueIncrease = 0.0
 		symbol = None
 		currentPrice = None
@@ -637,11 +637,11 @@ class Holdings(Resource):
 		buyPrice = None
 		buyDate = None
 		symbolShares = None
-		symbolPrinciple = None
+		symbolPrincipal = None
 
 		query = "SELECT Symbol, LotID, ShareID, BuyPrice, BuyDate FROM Holdings WHERE User = {} {}AND SellLotID IS NULL ORDER BY Symbol, BuyDate DESC, LotID;".format(params["id"], symbolFilter)
 		result = executeDatabaseQuery(query)
-		
+
 		for row in result:
 			# for the first returned row, save the row's information
 			if symbol is None:
@@ -653,17 +653,17 @@ class Holdings(Resource):
 				buyPrice = round(float(row[3]), 2)
 				buyDate = row[4]
 				symbolShares = 1
-				symbolPrinciple = buyPrice
-			
+				symbolPrincipal = buyPrice
+
 			# if the symbol is different than the current symbol, add the current lot to lots,
 			# then add lots to holdings, then save this row's information
 			elif symbol != row[0]:
 				lots.append({ "lotId" : lot, "buyPrice" : buyPrice, "buyDate" : buyDate, "valueIncrease": round((currentPrice - buyPrice) * len(shares), 2), "shares" : len(shares), "shareIds" : shares })
 				info = yfinance.Ticker(symbol)
 				info.info.update({ "currentPrice" : currentPrice })
-				holdings.append({ "symbol" : symbol, "shares" : symbolShares, "avgCostPerShare" : round(symbolPrinciple / symbolShares, 2), "principle" : round(symbolPrinciple, 2), "marketValue" : round(currentPrice * symbolShares, 2), "valueIncrease" : round((currentPrice * symbolShares) - symbolPrinciple, 2), "lots" : lots, "info" : info.info })
-				totalValueIncrease += round((currentPrice * symbolShares) - symbolPrinciple, 2)
-				totalPrinciple += round(symbolPrinciple, 2)
+				holdings.append({ "symbol" : symbol, "shares" : symbolShares, "avgCostPerShare" : round(symbolPrincipal / symbolShares, 2), "principal" : round(symbolPrincipal, 2), "marketValue" : round(currentPrice * symbolShares, 2), "valueIncrease" : round((currentPrice * symbolShares) - symbolPrincipal, 2), "lots" : lots, "info" : info.info })
+				totalValueIncrease += round((currentPrice * symbolShares) - symbolPrincipal, 2)
+				totalPrincipal += round(symbolPrincipal, 2)
 				symbol = row[0]
 				currentPrice = round(stock_info.get_live_price(symbol), 2)
 				lot = int(row[1])
@@ -672,8 +672,8 @@ class Holdings(Resource):
 				buyPrice = round(float(row[3]), 2)
 				buyDate = row[4]
 				symbolShares = 1
-				symbolPrinciple = buyPrice
-			
+				symbolPrincipal = buyPrice
+
 			# if only the lot is different than the current lot, add the current lot to lots,
 			# then save this this lot
 			elif lot != int(row[1]):
@@ -683,12 +683,12 @@ class Holdings(Resource):
 				buyPrice = round(float(row[3]), 2)
 				buyDate = row[4]
 				symbolShares += 1
-				symbolPrinciple += buyPrice
-			
+				symbolPrincipal += buyPrice
+
 			# otherwise, add this share to shares
 			else:
 				symbolShares += 1
-				symbolPrinciple += buyPrice
+				symbolPrincipal += buyPrice
 				shares.append(int(row[2]))
 
 		# add the saved information from the last returned row to lots and holdings
@@ -696,14 +696,14 @@ class Holdings(Resource):
 			lots.append({ "lotId" : lot, "buyPrice" : buyPrice, "buyDate" : buyDate, "valueIncrease": round((currentPrice - buyPrice) * len(shares), 2), "shares" : len(shares), "shareIds" : shares })
 			info = yfinance.Ticker(symbol)
 			info.info.update({ "currentPrice" : currentPrice })
-			holdings.append({ "symbol" : symbol, "shares" : symbolShares, "avgCostPerShare" : round(symbolPrinciple / symbolShares, 2), "principle" : round(symbolPrinciple, 2), "marketValue" : round(currentPrice * symbolShares, 2), "valueIncrease" : round((currentPrice * symbolShares) - symbolPrinciple, 2), "lots" : lots, "info" : info.info })
-			totalValueIncrease += round((currentPrice * symbolShares) - symbolPrinciple, 2)
-			totalPrinciple += round(symbolPrinciple, 2)
+			holdings.append({ "symbol" : symbol, "shares" : symbolShares, "avgCostPerShare" : round(symbolPrincipal / symbolShares, 2), "principal" : round(symbolPrincipal, 2), "marketValue" : round(currentPrice * symbolShares, 2), "valueIncrease" : round((currentPrice * symbolShares) - symbolPrincipal, 2), "lots" : lots, "info" : info.info })
+			totalValueIncrease += round((currentPrice * symbolShares) - symbolPrincipal, 2)
+			totalPrincipal += round(symbolPrincipal, 2)
 
 		if params["symbol"] is not None:
 			return Response(json.dumps(holdings[0]), status=HTTP_OK, mimetype="application/json")
 
-		return Response(json.dumps({ "id" : int(params["id"]), "totalPrinciple" : round(totalPrinciple, 2), "marketValue": round(totalPrinciple + totalValueIncrease, 2), "totalValueIncrease" : totalValueIncrease, "holdings" : holdings }), status=HTTP_OK, mimetype="application/json")
+		return Response(json.dumps({ "id" : int(params["id"]), "totalPrincipal" : round(totalPrincipal, 2), "marketValue": round(totalPrincipal + totalValueIncrease, 2), "totalValueIncrease" : totalValueIncrease, "holdings" : holdings }), status=HTTP_OK, mimetype="application/json")
 
 
 # /myshare/user/lots
@@ -745,7 +745,7 @@ class Lots(Resource):
 		lots = []
 		totalProfitFromSelling = 0.0
 		totalValueIncrease = 0.0
-		totalPrinciple = 0.0
+		totalPrincipal = 0.0
 		lot = None
 		symbol = None
 		buyPrice = None
@@ -756,9 +756,9 @@ class Lots(Resource):
 		sellLot = None
 		sold = None
 		profitFromSelling = None
-		
+
 		query = "SELECT LotID, Symbol, ShareID, BuyPrice, BuyDate, SellLotID, SellPrice, SellDate FROM Holdings WHERE {}User = {} ORDER BY BuyDate DESC, LotID, SellDate DESC, SellLotID;".format(lotFilter, params["id"])
-		
+
 		result = executeDatabaseQuery(query)
 		for row in result:
 			# for the first returned row, save the row's information
@@ -776,7 +776,7 @@ class Lots(Resource):
 				if row[5] is None:
 					holding.append(int(row[2]))
 
-				# otherwise initialize a sell lot and add this share to its shareIds 
+				# otherwise initialize a sell lot and add this share to its shareIds
 				else:
 					sellLot = { "sellLotId" : int(row[5]), "sellPrice" : round(float(row[6]), 2), "sellDate" : row[7], "shareIds" : [int(row[2])] }
 					sold += 1
@@ -795,7 +795,7 @@ class Lots(Resource):
 				sharesHolding = len(holding)
 				valueIncrease = round((currentPrice - buyPrice) * sharesHolding, 2)
 				totalValueIncrease += valueIncrease
-				totalPrinciple += round(buyPrice * sharesHolding, 2)
+				totalPrincipal += round(buyPrice * sharesHolding, 2)
 				totalProfitFromSelling += profitFromSelling
 				lots.append({ "lotId" : lot, "symbol" : symbol, "buyPrice" : buyPrice, "buyDate" : buyDate, "currentPrice" : currentPrice, "profitFromSelling" : round(profitFromSelling, 2), "holdingValueIncrease" : valueIncrease, "sharesHolding" : sharesHolding, "holding" : holding, "sharesSold" : sold, "sellLots" : sellLots })
 				lot = int(row[0])
@@ -811,8 +811,8 @@ class Lots(Resource):
 				# if this share was not sold, add it to the holdings array
 				if row[5] is None:
 					holding.append(int(row[2]))
-				
-				# otherwise initialize a sell lot and add this share to its shareIds 
+
+				# otherwise initialize a sell lot and add this share to its shareIds
 				else:
 					sellLot = { "sellLotId" : int(row[5]), "sellPrice" : round(float(row[6]), 2), "sellDate" : row[7], "shareIds" : [int(row[2])] }
 					sold += 1
@@ -841,14 +841,14 @@ class Lots(Resource):
 						sellLot.update({ "shares" : sellLotShares, "profit" : sellLotProfit } )
 						sellLots.append(sellLot)
 						sellLot = { "sellLotId" : int(row[5]), "sellPrice" : round(float(row[6]), 2), "sellDate" : row[7], "shareIds" : [int(row[2])] }
-					
+
 					# otherwise if there is a saved sell lot and this share is from that lot,
 					# add this share to the lot's shareIds
 					else:
 						sellLot["shareIds"].append(int(row[2]))
 					sold += 1
 
-				# otherwise initialize a sell lot and add this share to its shareIds 
+				# otherwise initialize a sell lot and add this share to its shareIds
 				else:
 					sellLot = { "sellLotId" : int(row[5]), "sellPrice" : round(float(row[6]), 2), "sellDate" : row[7], "shareIds" : [int(row[2])] }
 					sold += 1
@@ -867,14 +867,14 @@ class Lots(Resource):
 			sharesHolding = len(holding)
 			valueIncrease = round((currentPrice - buyPrice) * sharesHolding, 2)
 			totalValueIncrease += valueIncrease
-			totalPrinciple += round(buyPrice * sharesHolding, 2)
+			totalPrincipal += round(buyPrice * sharesHolding, 2)
 			totalProfitFromSelling += profitFromSelling
 			lots.append({ "lotId" : lot, "symbol" : symbol, "buyPrice" : buyPrice, "buyDate" : buyDate, "currentPrice" : currentPrice, "profitFromSelling" : round(profitFromSelling, 2), "holdingValueIncrease" : valueIncrease, "sharesHolding" : sharesHolding, "holding" : holding, "sharesSold" : sold, "sellLots" : sellLots })
 
 		if params["lotId"] is not None:
 			return Response(json.dumps(lots[0]), status=HTTP_OK, mimetype="application/json")
 
-		return Response(json.dumps({ "id" : int(params["id"]), "currentPrinciple" : totalPrinciple, "totalValueIncrease" : round(totalValueIncrease, 2), "totalProfitFromSelling": round(totalProfitFromSelling, 2), "lots" : lots }), status=HTTP_OK, mimetype="application/json")
+		return Response(json.dumps({ "id" : int(params["id"]), "currentPrincipal" : totalPrincipal, "totalValueIncrease" : round(totalValueIncrease, 2), "totalProfitFromSelling": round(totalProfitFromSelling, 2), "lots" : lots }), status=HTTP_OK, mimetype="application/json")
 
 
 	# add a new lot for a user
@@ -1223,7 +1223,7 @@ class SellLots(Resource):
 
 		query = "SELECT Symbol, SellLotID, ShareID, BuyPrice, BuyDate, SellPrice, SellDate, LotID FROM Holdings WHERE User = {} AND SellLotID {} ORDER BY SellDate DESC, SellLotID, BuyDate, LotID;".format(params["id"], sellLotFilter)
 		result = executeDatabaseQuery(query)
-		
+
 		for row in result:
 			# for the first returned row, save the row's information
 			if symbol is None:

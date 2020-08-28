@@ -1,6 +1,6 @@
 /**
  * @author Vlad Litvak
- * @since 08.14.2020
+ * @since 08.27.2020
  */
 
 // goes to home page if no user is logged in
@@ -152,7 +152,7 @@ function loadUserMenuAndSellLots() {
 
             // display the total profit
             totalProfitDiv.innerHTML = changeInDollars.format(data.totalProfit);
-            
+
             // create a div for each sell lot and add it to the display area
             let sellLotsDiv = document.getElementById("selllots");
             for(var sellLot of data.sellLots) {
@@ -217,7 +217,7 @@ function loadUserMenuAndSellLots() {
               headerDiv.appendChild(sellLotDateDiv);
 
               let lotWithdrawDiv = document.createElement("div");
-              lotWithdrawDiv.classList.add("lotprinciple");
+              lotWithdrawDiv.classList.add("lotprincipal");
               lotWithdrawDiv.innerHTML = dollar.format(sellLot.sellPrice * sellLot.sharesSold);
               headerDiv.appendChild(lotWithdrawDiv);
 

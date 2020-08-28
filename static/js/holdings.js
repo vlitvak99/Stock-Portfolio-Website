@@ -1,6 +1,6 @@
 /**
  * @author Vlad Litvak
- * @since 08.14.2020
+ * @since 08.27.2020
  */
 
 // goes to home page if no user is logged in
@@ -141,26 +141,26 @@ function loadUserMenuAndHoldings() {
       if (response.status === 200) {
         response.json().then(function(data) {
           // verify user has holdings
-          if(data.holdings.length != 0 || data.totalPrinciple != 0 || data.marketValue != 0) {
+          if(data.holdings.length != 0 || data.totalPrincipal != 0 || data.marketValue != 0) {
             // get existing display areas
             let totalMarketValueDiv = document.getElementById("marketvalue");
-            let totalPrincipleDiv = document.getElementById("principle");
+            let totalPrincipalDiv = document.getElementById("principal");
             let totalChangeDiv = document.getElementById("change");
 
             // color the market value and total change displays based on whether it's increased
             totalMarketValueDiv.style.color = "#24A292";
             totalChangeDiv.style.color = "#24A292";
-            if(data.marketValue < data.totalPrinciple) {
+            if(data.marketValue < data.totalPrincipal) {
               totalMarketValueDiv.style.color = "#FF3200";
               totalChangeDiv.style.color = "#FF3200";
             }
 
             // calculate percent change
-            let percentChange = (data.totalValueIncrease / data.totalPrinciple) * 100;
+            let percentChange = (data.totalValueIncrease / data.totalPrincipal) * 100;
 
-            // display the total market value and total principle
+            // display the total market value and total principal
             totalMarketValueDiv.innerHTML = dollar.format(data.marketValue);
-            totalPrincipleDiv.innerHTML = dollar.format(data.totalPrinciple);
+            totalPrincipalDiv.innerHTML = dollar.format(data.totalPrincipal);
 
             // display the total change
             if(percentChange < 0) totalChangeDiv.innerHTML = changeInDollars.format(data.totalValueIncrease) + " | " + percentChange.toFixed(2) + "%";
@@ -171,7 +171,7 @@ function loadUserMenuAndHoldings() {
 
             // create a div for each holding and add it to the display area
             for(var holding of data.holdings) {
-              let percentChange = (holding.valueIncrease / holding.principle) * 100;
+              let percentChange = (holding.valueIncrease / holding.principal) * 100;
 
               let holdingDiv = document.createElement("div");
               holdingDiv.classList.add("listitem");
@@ -248,10 +248,10 @@ function loadUserMenuAndHoldings() {
               clearDiv.style.clear = "both";
               infoDiv.appendChild(clearDiv);
 
-              let principleDiv = document.createElement("div");
-              principleDiv.classList.add("leftinfo");
-              principleDiv.innerHTML = "Principle:&nbsp;&nbsp;<span style='color:white;'>" + dollar.format(holding.principle) + "</span>";
-              infoDiv.appendChild(principleDiv);
+              let principalDiv = document.createElement("div");
+              principalDiv.classList.add("leftinfo");
+              principalDiv.innerHTML = "Principal:&nbsp;&nbsp;<span style='color:white;'>" + dollar.format(holding.principal) + "</span>";
+              infoDiv.appendChild(principalDiv);
 
               let dayGainDiv = document.createElement("div");
               dayGainDiv.classList.add("rightinfo");
@@ -305,10 +305,10 @@ function loadUserMenuAndHoldings() {
               sharesHeader.innerHTML = "Shares";
               tableHeader.appendChild(sharesHeader);
 
-              let principleHeader = document.createElement("th");
-              principleHeader.style.textAlign = "right";
-              principleHeader.innerHTML = "Principle";
-              tableHeader.appendChild(principleHeader);
+              let principalHeader = document.createElement("th");
+              principalHeader.style.textAlign = "right";
+              principalHeader.innerHTML = "Principal";
+              tableHeader.appendChild(principalHeader);
 
               let gainHeader = document.createElement("th");
               gainHeader.style.textAlign = "right";
@@ -337,10 +337,10 @@ function loadUserMenuAndHoldings() {
                 sharesValue.innerHTML = lot.shares;
                 lotRow.appendChild(sharesValue);
 
-                let principleValue = document.createElement("td");
-                principleValue.style.textAlign = "right";
-                principleValue.innerHTML = dollar.format(lot.shares * lot.buyPrice);
-                lotRow.appendChild(principleValue);
+                let principalValue = document.createElement("td");
+                principalValue.style.textAlign = "right";
+                principalValue.innerHTML = dollar.format(lot.shares * lot.buyPrice);
+                lotRow.appendChild(principalValue);
 
                 let percentGain = (((lot.valueIncrease / lot.shares) / lot.buyPrice) * 100).toFixed(2);
                 let gainValue = document.createElement("td");
