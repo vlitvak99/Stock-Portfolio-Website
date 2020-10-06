@@ -4,17 +4,17 @@
 
 ### DESCRIPTION
 
-- This webapp manages users' stock portfolios - showing holdings, lots, and sells.
+- This website manages users' stock portfolios - showing holdings, lots, and sells.
   - It shows users the profit they have made from selling, and the value increase of their current holdings.
   - It also gives users access to live stock information of any symbol.
-- The webapp is hosted locally by running as a Python Flask app.
+- The website is hosted locally by running as a Python Flask app.
 - The Flask app hosts all the pages of the app, along with API endpoints used by the front end.
 - Yahoo Finance APIs are used to get current stock information.
 <br>
 
 ### FILE INFO
 
-- [**MyShareApi.py3**](MyShareApi.py3) defines logic for API endpoints and hosts the front end pages.
+- [**MyShareApi.py3**](MyShareApi.py3) defines logic for API endpoints and hosts the website.
   - User information is gathered and stored by connecting to the MyShare database.
   - Live stock information is gathered from Yahoo Finance APIs.
   - Passwords are encrypted using `passlib.hash.sha256_crypt` before being inserted into the database.
@@ -27,11 +27,11 @@
   - a trigger which automatically removes password reset codes that are more than 5 minutes old
   - multiple indexes to make common queries more efficient
 
-- The [**templates**](templates) folder contains the HTML for all front end webpages.
+- The [**templates**](templates) folder contains the HTML files for all front end webpages.
 
-- The [**static/js**](static/js) folder contains the JavaScript for all front end webpages.
+- The [**static/js**](static/js) folder contains the JavaScript files for all front end webpages.
 
-- The [**static/css**](static/css) folder contains the CSS for all front end webpages.
+- The [**static/css**](static/css) folder contains the CSS files for all front end webpages.
 
 <br>
 
